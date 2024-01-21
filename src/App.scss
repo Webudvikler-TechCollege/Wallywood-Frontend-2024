@@ -1,0 +1,11 @@
+@use './assets/scss/mixins';
+@use './assets/scss/vars';
+
+body {
+  @include mixins.reset;
+  font-family: 'Verdana';
+}
+
+#root {
+  @include mixins.container
+}
