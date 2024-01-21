@@ -1,0 +1,9 @@
+@use '../../../Assets/scss/vars';
+@use '../../../Assets/scss/mixins';
+
+.header {
+	@include mixins.globalPadding;
+	background-color: vars.$primaryColor;
+	color: vars.$secondaryColor;
+	text-align: center;
+  }
