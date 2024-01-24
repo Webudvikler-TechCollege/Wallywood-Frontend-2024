@@ -8,7 +8,7 @@ export const PosterNav = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const result = await axios.get('http://localhost:4000/genre?sortkey=title')
+      const result = await axios.get('http://localhost:3000/genre?sortkey=title')
       setData(result.data);
     }
     getData()

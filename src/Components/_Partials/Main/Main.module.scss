@@ -1,9 +1,0 @@
-@use '../../../Assets/scss/mixins';
-@use '../../../Assets/scss/vars';
-
-.main {
-	@include mixins.globalPadding;
-	padding-bottom: 2rem;
-	min-height: 20rem;
-	background-color: vars.$mainBgColor;
-}

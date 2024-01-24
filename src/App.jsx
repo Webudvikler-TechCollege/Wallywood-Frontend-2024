@@ -8,10 +8,10 @@ import CartIcon from "./Components/Cart/CartIcon"
 const App = () => {
   return (
     <ContainerStyle $maxwidth={1024}>
-      <CartIcon></CartIcon>
-      <Header></Header>
+      <CartIcon />
+      <Header />
       <AppRouter />
-      <Footer></Footer>
+      <Footer />
     </ContainerStyle>
   )
 }

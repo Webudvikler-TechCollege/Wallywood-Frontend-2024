@@ -11,10 +11,12 @@ export const AppRouter = () => {
 	return (
 		<Routes>
 			<Route index element={<Home />} />
+
 			<Route path="/posters" element={<Posters />}>
 				<Route path=":genre" element={<PosterList />} />
 				<Route path=":genre/:poster" element={<PosterDetails />} />
 			</Route>
+			
 			<Route path="/login" element={<Login />} />
 			<Route path="/cart" element={<Cart />} />
 			<Route path="*" element={<Notfound />} />

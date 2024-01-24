@@ -13,7 +13,7 @@ export const PosterDetails = () => {
   useEffect(() => {
     const getData = async () => {
       const result = await axios.get(
-        `http://localhost:4000/posters/${poster}`
+        `http://localhost:3000/posters/${poster}`
       )
       setData(result.data)
     }

@@ -12,7 +12,7 @@ export const PosterList = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const endpoint = `http://localhost:4000/posters/list_by_genre/${genre}`
+      const endpoint = `http://localhost:3000/posters/list_by_genre/${genre}`
       const result = await axios.get(endpoint)
       setData(result.data)
     }
