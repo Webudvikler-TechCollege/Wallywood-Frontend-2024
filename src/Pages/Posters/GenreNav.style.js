@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import {ClearList} from '../../Styled/Mixins'
 
-export const PosterNavsStyle = styled.nav`
+export const GenreNavStyle = styled.nav`
 
 	ul {
 		${ClearList}

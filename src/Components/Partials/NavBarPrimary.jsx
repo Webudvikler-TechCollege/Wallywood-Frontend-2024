@@ -8,7 +8,7 @@ export const NavBarPrimary = () => {
 				<li><NavLink to="/">HOME</NavLink></li>
 				<li><NavLink to="/posters/drama">PLAKATER</NavLink></li>
 				<li><NavLink to="/om_os">OM OS</NavLink></li>
-				<li><NavLink to="/kontakt">KONTAKT</NavLink></li>
+				<li><NavLink to="/contact">KONTAKT</NavLink></li>
 				<li><NavLink to="/cart">KURV</NavLink></li>
 				<li><NavLink to="/login">LOGIN</NavLink></li>
 			</ul>

@@ -1,13 +1,13 @@
 import { ContentWrapper } from "../../Components/ContentWrapper/ContentWrapper"
 import { PostersStyle } from './Posters.style'
-import { PosterNav } from './PosterNav'
+import { GenreNav } from './GenreNav'
 import { Outlet } from "react-router-dom"
 
 export const Posters = () => {
   return (
     <ContentWrapper title="Plakater" description="Se vores udvalg af plakater">
       <PostersStyle>
-        <div><PosterNav /></div>
+        <div><GenreNav /></div>
         <div>
           <Outlet />
         </div>
