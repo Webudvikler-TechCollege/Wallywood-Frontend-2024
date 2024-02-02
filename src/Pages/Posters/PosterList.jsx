@@ -1,23 +1,30 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import axios from "axios"
 import { Link, useParams } from "react-router-dom"
 import { PosterListStyle } from "./PosterList.style"
-import AddToCartButton from "../../Components/Cart/AddToCartButton"
-import { useCartItems } from "../../Components/Providers/CartProvider"
+import { usePosterData } from "../../Components/Providers/PosterProvider"
 
 export const PosterList = () => {
-  const [data, setData] = useState([])
-  const { cartItems } = useCartItems()
-  let { genre } = useParams({ genre: 'drama' })
+  const { posterData } = usePosterData()
+  const { genre } = useParams({ genre: 'drama' })
 
-  useEffect(() => {
-    const getData = async () => {
-      const endpoint = `http://localhost:3000/posters/list_by_genre/${genre}`
-      const result = await axios.get(endpoint)
-      setData(result.data)
+  // Data filter function
+  const data = useMemo(() => {
+    if (!posterData) {
+      return [];
     }
-    getData()
-  }, [genre])
+    if (genre) {
+      // Filtrering ud fra søgeresultat
+      return posterData.filter(x => x.genres.some(y => y.slug === genre))
+    } else {
+      // Random sortering og slice
+      return posterData
+        .sort(function (a, b) {
+          return 0.5 - Math.random();
+        })
+        .slice(0, 10);
+    }
+  }, [posterData, genre]);
 
   return (
     <PosterListStyle>
@@ -36,12 +43,6 @@ export const PosterList = () => {
                 </Link>
               </p>
               <p>DKK {poster.price},00</p>              
-              <p>
-                {cartItems.find(x => x.poster.id === poster.id) ? 
-                  (<span>Denne vare ligger i kurven</span>) : 
-                  (<AddToCartButton id={poster.id}>Læg i kurv</AddToCartButton>)
-                }
-              </p>
             </div>
           )
         })}

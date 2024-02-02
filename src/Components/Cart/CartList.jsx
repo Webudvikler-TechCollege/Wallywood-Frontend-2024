@@ -2,10 +2,12 @@ import { CartListStyle } from "./CartList.style";
 import { useCartItems } from '../Providers/CartProvider'
 import { useAuth } from "../Providers/AuthProvider";
 import axios from "axios";
+import { AiFillDelete } from "react-icons/ai";
 
 const CartList = () => {
 	const { cartItems, setCartItems } = useCartItems()
 	const { loginData } = useAuth()
+	console.log(cartItems);
 
 
 	let sum = cartItems.reduce((prev, current) => {
@@ -18,10 +20,10 @@ const CartList = () => {
 				Authorization: `Bearer ${loginData.access_token}`
 			}
 		}
-		const endpoint = `http://localhost:4000/cart/${id}`
+		const endpoint = `http://localhost:3000/cart/${id}`
 		const result = await axios.delete(endpoint, options)
 		if(result.data) {
-			const endpoint = `http://localhost:4000/cart`
+			const endpoint = `http://localhost:3000/cart`
 			const newCartData = await axios.get(endpoint, options)
 			setCartItems(newCartData.data)
 		}
@@ -41,8 +43,7 @@ const CartList = () => {
 					<div>{item.poster.name}</div>
 					<div>{item.quantity}</div>
 					<div>{item.poster.price},00 DKK</div>
-					<div>
-					</div>
+					<div><AiFillDelete onClick={() => handleTrashClick(item.id)} /></div>
 				</div>
 			)
 		})}

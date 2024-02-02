@@ -19,12 +19,13 @@ const CartProvider = ({children}) => {
 				}
 			}
 
-			const endpoint = `http://localhost:4000/cart`
+			const endpoint = `http://localhost:3000/cart`
 
 			try {
 				if(loginData && loginData.access_token) {
 					const result = await axios.get(endpoint, options)
 					setCartItems(result.data)
+
 				}
 
 			} catch(err) {

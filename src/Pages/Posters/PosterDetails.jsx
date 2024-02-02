@@ -3,45 +3,81 @@ import axios from "axios"
 import { useParams } from "react-router-dom"
 import { PosterDetailsStyle } from "./PosterDetails.style"
 import { useCartItems } from "../../Components/Providers/CartProvider"
-import AddToCartButton from "../../Components/Cart/AddToCartButton"
+import { useForm } from "react-hook-form"
+import { useAuth } from "../../Components/Providers/AuthProvider"
 
 export const PosterDetails = () => {
-  const [data, setData] = useState([])
-  const { cartItems } = useCartItems()
+  const { loginData } = useAuth()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+  const [apiData, setApiData] = useState([])
+  const { cartItems, setCartItems } = useCartItems()
   const { poster } = useParams()
 
-  useEffect(() => {
-    const getData = async () => {
-      const result = await axios.get(
-        `http://localhost:3000/posters/${poster}`
-      )
-      setData(result.data)
+  const submit2Cart = async (data) => {
+    const options = {
+      headers: {
+        Authorization: `Bearer ${loginData.access_token}`,
+      },
     }
-    getData()
-  }, [poster])
+
+    const endpoint = `http://localhost:3000/cart`
+    const result = await axios.post(endpoint, data, options)
+    if (result.data.newId) {
+      const newCartItems = await axios.get(endpoint, options)
+      setCartItems(newCartItems.data)
+    }
+  }
+
+  useEffect(() => {
+    const getapiData = async () => {
+      const result = await axios.get(`http://localhost:3000/posters/${poster}`)
+      setApiData(result.data)
+    }
+    getapiData()
+  }, [poster, setApiData])
+
+  // Render the component only when apiData is available!!!
+  if (!apiData.id) {
+    return <div>Loading...</div>
+  }
 
   return (
     <PosterDetailsStyle>
       <div>
         <figure>
-          <img src={data.image} alt={data.name} />
+          <img src={apiData.image} alt={apiData.name} />
         </figure>
       </div>
       <div>
-        <h2>{data.name}</h2>
-        <p dangerouslySetInnerHTML={{ __html: data.description }}></p>
+        <h2>{apiData.name}</h2>
+        <p dangerouslySetInnerHTML={{ __html: apiData.description }}></p>
         <p>
-          Mål: {data.width} x {data.height} cm
+          Mål: {apiData.width} x {apiData.height} cm
         </p>
-        <p>Varenummer: {data.id}</p>
-        <p>Pris: {data.price},00 DKK</p>
-        <p>
-          {cartItems.find(x => x.poster.id === data.id) ? (
-            <span>Denne vare ligger allerede i kurven</span>
-          ) : (
-            <AddToCartButton id={data.id}>Læg i kurv</AddToCartButton>
-          )}
-        </p>
+        <p>Varenummer: {apiData.id}</p>
+        <p>Pris: {apiData.price},00 DKK</p>
+        <p>Antal på lager: {apiData.stock} DKK</p>
+
+        {cartItems && cartItems.find((x) => x.poster.id === apiData.id) ? (
+          <p className="isInCart">Denne vare ligger allerede i kurven</p>
+        ) : (
+          <form onSubmit={handleSubmit(submit2Cart)}>
+            <input
+              type="hidden"
+              defaultValue={apiData.id}
+              {...register("poster_id")}
+            />
+            <input
+              type="number"
+              {...register("quantity", { required: true })}
+            />
+            <button>Læg i kurv</button>
+          </form>
+        )}
       </div>
     </PosterDetailsStyle>
   )

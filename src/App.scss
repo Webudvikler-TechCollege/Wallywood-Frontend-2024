@@ -9,3 +9,7 @@ body {
 #root {
   @include mixins.container
 }
+
+.error, .isInCart {
+  color: red;
+}

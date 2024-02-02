@@ -5,8 +5,8 @@ import Notfound from '../../Pages/Notfound/Notfound';
 import { Posters } from '../../Pages/Posters/Posters';
 import { PosterList } from '../../Pages/Posters/PosterList'
 import { PosterDetails } from '../../Pages/Posters/PosterDetails'
-import { Cart } from '../../Pages/Cart/Cart';
 import { Contact } from '../../Pages/Contact/Contact';
+import { Cart } from '../../Pages/Cart/Cart';
 
 export const AppRouter = () => {
 	return (
@@ -18,8 +18,8 @@ export const AppRouter = () => {
 				<Route path=":genre/:poster" element={<PosterDetails />} />
 			</Route>
 			
-			<Route path="/login" element={<Login />} />
 			<Route path="/cart" element={<Cart />} />
+			<Route path="/login" element={<Login />} />
 			<Route path="/contact" element={<Contact />} />
 			<Route path="*" element={<Notfound />} />
 		</Routes>

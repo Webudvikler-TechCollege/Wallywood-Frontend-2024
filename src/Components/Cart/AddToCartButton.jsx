@@ -11,14 +11,14 @@ const AddToCartButton = (props) => {
     const options = {
       headers: {
         Authorization: `Bearer ${loginData.access_token}`,
-      },
+      }
     }
 
     const formdata = new URLSearchParams()
     formdata.append("poster_id", props.id)
     formdata.append("quantity", 1)
 
-    const endpoint = `http://localhost:4000/cart`
+    const endpoint = `http://localhost:3000/cart`
     const result = await axios.post(endpoint, formdata, options)
     if (result.data) {
       const newCartItems = await axios.get(endpoint, options)
@@ -31,9 +31,12 @@ const AddToCartButton = (props) => {
       {cartItems.find((x) => x.poster.id === props.id) ? (
         <span>Dette produkt ligger i kurven</span>
       ) : (
+        <>
+        <input type="number" min="1" name="quantity"></input>
         <AddToCartButtonStyle onClick={clickHandle}>
           {props.children}
         </AddToCartButtonStyle>
+        </>
       )}
     </>
   )

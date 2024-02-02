@@ -1,24 +1,21 @@
-import { useEffect, useState } from "react"
-import axios from "axios"
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useGenre } from "../../Components/Providers/GenreProvider";
 import { GenreNavStyle } from "./GenreNav.style";
-import { useGenreData } from "../../Components/Providers/GenreProvider";
 
 export const GenreNav = () => {
-  const { genreData } = useGenreData()
+  const { genreData } = useGenre()
 
   return (
     <GenreNavStyle>
       <ul>
-      {genreData && genreData.map(genre => {
-        return (
-          <li key={genre.id} >
-            <Link to={`/posters/${genre.slug}`}>{genre.title}</Link>
-          </li>
-        )
-      })}
+        {genreData && genreData.map(genre => {
+          return (
+            <li key={genre.id}>
+              <NavLink to={genre.slug}>{genre.title}</NavLink>
+            </li>
+          )
+        })}
       </ul>
     </GenreNavStyle>
   )  
 }
-

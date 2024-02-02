@@ -1,9 +1,7 @@
 import { ContentWrapper } from "../../Components/ContentWrapper/ContentWrapper"
 import SlideWrapper from "../../Components/SlideWrapper/SlideWrapper"
-import { useAuth } from "../../Components/Providers/AuthProvider"
 
 export const Home = () => {
-  const { loginData } = useAuth()
 
   return (
     <>
@@ -17,7 +15,6 @@ export const Home = () => {
         necessitatibus dicta, neque dignissimos odio fugiat enim fuga temporibus
         soluta recusandae itaque illo vitae, totam dolore distinctio praesentium
         accusantium. Maxime, aspernatur.
-        <p>{loginData ? "Du er logget ind" : "Du er IKKE logget ind"}</p>
       </ContentWrapper>
     </>
   )
