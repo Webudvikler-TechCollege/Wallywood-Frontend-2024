@@ -5,6 +5,10 @@ export const ContainerStyle = styled.section`
 	width: 100%;
 	max-width: ${props => props.maxwidth}px;
 	margin: 0 auto;
-	padding: 1.0rem 2.3rem;
+	padding: 0rem 2.3rem;
+
+	@media screen and (width < 820px) {
+		padding: 0rem 1rem;		
+	}
 `
 

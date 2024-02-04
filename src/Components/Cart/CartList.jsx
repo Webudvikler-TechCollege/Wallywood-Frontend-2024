@@ -1,6 +1,6 @@
 import { CartListStyle } from "./CartList.style";
-import { useCartItems } from '../Providers/CartProvider'
-import { useAuth } from "../Providers/AuthProvider";
+import { useCartItems } from './CartProvider'
+import { useAuth } from "../Auth/AuthProvider";
 import axios from "axios";
 import { AiFillDelete } from "react-icons/ai";
 

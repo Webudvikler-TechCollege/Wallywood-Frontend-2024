@@ -1,6 +1,6 @@
 import { ContentWrapper } from "../../Components/ContentWrapper/ContentWrapper"
 import { PostersStyle } from './Posters.style'
-import { GenreNav } from './GenreNav'
+import { GenreNav } from '../../Components/Genre/GenreNav'
 import { Outlet } from "react-router-dom"
 
 export const Posters = () => {

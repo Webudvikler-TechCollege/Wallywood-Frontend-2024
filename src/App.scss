@@ -4,6 +4,7 @@
 body {
   @include mixins.reset;
   font-family: 'Verdana';
+  font-size: 1rem;
 }
 
 #root {

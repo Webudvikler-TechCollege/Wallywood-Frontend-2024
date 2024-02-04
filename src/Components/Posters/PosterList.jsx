@@ -1,28 +1,26 @@
-import { useEffect, useMemo, useState } from "react"
-import axios from "axios"
+import { useMemo } from "react"
 import { Link, useParams } from "react-router-dom"
 import { PosterListStyle } from "./PosterList.style"
-import { usePosterData } from "../../Components/Providers/PosterProvider"
+import { usePosterData } from "./PosterProvider"
 
-export const PosterList = () => {
+export const PosterList = ({ limit }) => {
   const { posterData } = usePosterData()
   const { genre } = useParams({ genre: 'drama' })
 
   // Data filter function
   const data = useMemo(() => {
-    if (!posterData) {
-      return [];
-    }
-    if (genre) {
-      // Filtrering ud fra søgeresultat
+    if (!posterData) return []
+
+    if(genre) {
       return posterData.filter(x => x.genres.some(y => y.slug === genre))
     } else {
-      // Random sortering og slice
-      return posterData
+      if(limit) {
+        return posterData
         .sort(function (a, b) {
           return 0.5 - Math.random();
         })
-        .slice(0, 10);
+        .slice(0, limit);
+      }
     }
   }, [posterData, genre]);
 

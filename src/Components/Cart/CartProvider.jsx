@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
 import { createContext } from "react";
-import { useAuth } from "./AuthProvider";
+import { useAuth } from "../Auth/AuthProvider";
 
 const CartContext = createContext()
 

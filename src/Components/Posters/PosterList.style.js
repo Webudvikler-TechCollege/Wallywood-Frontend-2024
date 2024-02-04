@@ -4,6 +4,18 @@ import {Reset} from '../../Styled/Mixins'
 export const PosterListStyle = styled.section`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	
+	@media screen and (max-width: 1024px) {
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 20px;
+	}
+	
+	@media screen and (width < 768px) {
+		grid-template-columns: 1fr;
+		grid-gap: 20px;
+	}
+
+
 
 	div {
 		//border: solid 1px #000;

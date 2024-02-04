@@ -9,7 +9,13 @@ export const Reset = `
 	padding-inline-start: 0px;
 `
 
-export const ClearList = `
+export const ResetList = `
 	list-style-type: none;
+	${Reset};	
+`
+
+export const ResetButton = `
+	background-color: transparent;
+	border: 0px none;
 	${Reset};	
 `
