@@ -5,4 +5,8 @@ export const SlideWrapperStyle = styled.div`
 	img {
 		width: 100%
 	}
+
+	@media screen and (width < 820px) {
+		display: none;
+	}
 `

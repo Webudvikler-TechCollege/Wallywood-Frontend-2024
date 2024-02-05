@@ -1,18 +1,19 @@
-import CartIcon from "../Cart/CartIcon";
-import { useAuth } from "../Providers/AuthProvider";
-import { HeaderStyle } from "./Header.style";
-import { NavBarPrimary } from "./NavBarPrimary";
-import { Link } from "react-router-dom";
+import { CartIcon } from "../Cart/CartIcon"
+import { HeaderStyle } from "./Header.style"
+import { NavBarPrimary } from "./NavBarPrimary"
+import { Link } from "react-router-dom"
+import { LoginInfo } from "../Auth/LoginInfo"
 
 export const Header = () => {
-	const { loginData } = useAuth();
-
-	return (
-		<HeaderStyle>
-			<CartIcon />
-			<Link to="/">Wallywood</Link>
-			<NavBarPrimary />
-			{loginData && <div>Du er logget ind som {loginData.user.firstname}</div>}
-		</HeaderStyle>		
-	);
+  return (
+    <HeaderStyle>
+      <section className="userinfo">
+        <LoginInfo />
+      </section>
+      <div>
+        <Link to="/">Wallywood</Link>
+        <NavBarPrimary />
+      </div>
+    </HeaderStyle>
+  )
 }

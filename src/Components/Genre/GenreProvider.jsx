@@ -7,7 +7,7 @@ export const GenreProvider = ({children}) => {
 	const [genreData, setGenreData] = useState([])
 
 	const getData = async () => {
-		const url = `http://localhost:3000/genre`
+		const url = `http://localhost:3000/genre?sort_key=title`
 		const result = await axios.get(url)
 		sessionStorage.setItem("genres", JSON.stringify(result.data))
 		setGenreData(result.data)

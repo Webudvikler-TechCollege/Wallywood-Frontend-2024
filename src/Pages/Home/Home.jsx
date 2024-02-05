@@ -1,20 +1,16 @@
 import { ContentWrapper } from "../../Components/ContentWrapper/ContentWrapper"
+import { PosterRandom } from "../../Components/Posters/PosterRandom"
 import SlideWrapper from "../../Components/SlideWrapper/SlideWrapper"
 
 export const Home = () => {
-
   return (
     <>
       <SlideWrapper />
-      <ContentWrapper
-        title="Velkommen"
+      <ContentWrapper        
         description="Her finder du nye og gamle film plakater"
-        subtitle="Alt i filmplakater"
+        subtitle="Udvalgte plakater"
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas,
-        necessitatibus dicta, neque dignissimos odio fugiat enim fuga temporibus
-        soluta recusandae itaque illo vitae, totam dolore distinctio praesentium
-        accusantium. Maxime, aspernatur.
+        <PosterRandom limit="2" />
       </ContentWrapper>
     </>
   )
