@@ -1,5 +1,5 @@
-@use './assets/scss/mixins';
-@use './assets/scss/vars';
+@use './Assets/scss/mixins';
+@use './Assets/scss/vars';
 
 body {
   @include mixins.reset;
