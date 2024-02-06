@@ -11,7 +11,7 @@ export const Header = () => {
         <LoginInfo />
       </section>
       <div>
-        <Link to="/">Wallywood</Link>
+        <Link to="/">Hallywood</Link>
         <NavBarPrimary />
       </div>
     </HeaderStyle>
