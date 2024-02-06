@@ -7,6 +7,7 @@ import { PosterList } from '../Posters/PosterList'
 import { PosterDetails } from '../Posters/PosterDetails'
 import { Contact } from '../../Pages/Contact/Contact';
 import { Cart } from '../../Pages/Cart/Cart';
+import { SignUp } from '../../Pages/SignUp/SignUp';
 
 export const AppRouter = () => {
 	return (
@@ -22,6 +23,8 @@ export const AppRouter = () => {
 			<Route path="/login" element={<Login />} />
 			<Route path="/contact" element={<Contact />} />
 			<Route path="*" element={<PageNotFound />} />
+
+			<Route path="signup" element={<SignUp />} />
 		</Routes>
 	);
 }

@@ -1,49 +1,41 @@
-import axios from "axios";
-import { useState } from "react";
-import { useContext } from "react";
-import { useEffect } from "react";
-import { createContext } from "react";
-import { useAuth } from "../Auth/AuthProvider";
+import { createContext, useContext, useEffect, useState } from "react"
+import { useAuth } from "../Auth/AuthProvider"
+import axios from "axios"
 
-const CartContext = createContext()
+const cartContext = createContext()
 
-const CartProvider = ({children}) => {
+export const CartProvider = ({children}) => {
 	const [ cartItems, setCartItems ] = useState([])
 	const { loginData } = useAuth()
 
-	useEffect(() => {
-		const getData = async () => {
-			const options = {
-				headers: {
-					Authorization: `Bearer ${loginData.access_token}`
-				}
+	const getData = async () => {
+		const options = {
+			headers: {
+				Authorization: `Bearer ${loginData.access_token}`
 			}
-
-			const endpoint = `http://localhost:3000/cart`
-
-			try {
-				if(loginData && loginData.access_token) {
-					const result = await axios.get(endpoint, options)
-					setCartItems(result.data)
-
-				}
-
-			} catch(err) {
-				console.error(`Fejl i kald af cart liste: ${err}`);
-			}
-
 		}
+
+		const endpoint = `http://localhost:3000/cart`
+		try {
+			if(loginData && loginData.access_token) {
+				const result = await axios.get(endpoint, options)
+				setCartItems(result.data)	
+			}
+		} catch (error) {
+			console.error(`Fejl i kald af indkøbskurv liste: ${error}`)	
+		}
+	}
+
+	useEffect(() => {
 		getData()
-	}, [children, loginData]);
+	},[children, loginData])
 
 
-	return (
-		<CartContext.Provider value={{ cartItems, setCartItems }}>
-			{children}
-		</CartContext.Provider>
-	)
+  return (
+	<cartContext.Provider value={{ cartItems, setCartItems }}>
+		{children}
+	</cartContext.Provider>
+  )
 }
 
-const useCartItems = () => useContext(CartContext)
-
-export { CartProvider, useCartItems }
+export const useCart = () => useContext(cartContext)

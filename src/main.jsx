@@ -7,26 +7,24 @@ import { GlobalStyle } from "./Styled/Global.style.js"
 import { theme } from "./Styled/Theme.js"
 import { GenreProvider } from "./Components/Genre/GenreProvider.jsx"
 import { AuthProvider } from "./Components/Auth/AuthProvider.jsx"
-import { CartProvider } from "./Components/Cart/CartProvider.jsx"
 import { PosterProvider } from "./Components/Posters/PosterProvider.jsx"
+import { CartProvider } from "./Components/Cart/CartProvider.jsx"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
       <CartProvider>
         <PosterProvider>
-        <GenreProvider>
-        <CartProvider>
-          {/* Theme Provider for style values */}
-          <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            {/* BrowserRouter for route handling */}
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </ThemeProvider>
-          </CartProvider>
-        </GenreProvider>
+          <GenreProvider>
+            {/* Theme Provider for style values */}
+            <ThemeProvider theme={theme}>
+              <GlobalStyle />
+              {/* BrowserRouter for route handling */}
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </ThemeProvider>
+          </GenreProvider>
         </PosterProvider>
       </CartProvider>
     </AuthProvider>

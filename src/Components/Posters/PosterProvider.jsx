@@ -20,7 +20,7 @@ const PosterProvider = ({children}) => {
 		} else {
 			// Kalder API og smider data i sessionstorage
 			const getData = async () => {
-				const result = await axios.get('http://localhost:3000/posters?attributes=id,name,description,price,image')
+				const result = await axios.get('http://localhost:3000/posters?attributes=id,name,description,price,image,slug')
 				sessionStorage.setItem('posterdata', JSON.stringify(result.data));
 				setPosterData(result.data)
 			}

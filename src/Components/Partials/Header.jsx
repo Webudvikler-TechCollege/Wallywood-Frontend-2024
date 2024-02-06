@@ -1,4 +1,3 @@
-import { CartIcon } from "../Cart/CartIcon"
 import { HeaderStyle } from "./Header.style"
 import { NavBarPrimary } from "./NavBarPrimary"
 import { Link } from "react-router-dom"
@@ -11,7 +10,7 @@ export const Header = () => {
         <LoginInfo />
       </section>
       <div>
-        <Link to="/">Wallywood</Link>
+        <Link to="/">Hallywood</Link>
         <NavBarPrimary />
       </div>
     </HeaderStyle>

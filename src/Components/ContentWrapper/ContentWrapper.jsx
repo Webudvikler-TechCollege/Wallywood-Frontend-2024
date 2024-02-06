@@ -26,10 +26,3 @@ const ContentWrapper = (props) => {
   }
   
   export { ContentWrapper }
-  
-ContentWrapper.propTypes = {
-	title: PropTypes.string.isRequired,
-	subtitle: PropTypes.string,
-	description: PropTypes.string,
-	children: PropTypes.node.isRequired
-}

@@ -13,6 +13,7 @@ export const NavBarPrimary = () => {
 				<li><NavLink to="/contact">KONTAKT</NavLink></li>
 				<li><NavLink to="/cart">KURV</NavLink></li>
 				<li><NavLink to="/login">LOGIN</NavLink></li>
+				<li><NavLink to="/signup">SIGN UP</NavLink></li>
 			</ul>
 		</NavBarPrimaryStyle>
 	);

@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const PostersStyle = styled.div`
+  border: solid 2px ${props => props.color};
+  
   display: grid;
   grid-template-columns: 1fr 4fr;
 

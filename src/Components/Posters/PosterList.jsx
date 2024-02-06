@@ -27,16 +27,16 @@ export const PosterList = ({ limit }) => {
   return (
     <PosterListStyle>
       {data &&
-        data.map((poster) => {
+        data.map(poster => {
           return (
             <div key={poster.id}>
               <figure>
-                <Link to={`/posters/details/${poster.slug}`}>
+                <Link to={`/posters/${genre}/${poster.slug}`}>
                   <img src={poster.image} alt="" />
                 </Link>
               </figure>
               <p>
-                <Link to={`/posters/details/${poster.slug}`}>
+                <Link to={`/posters/${genre}/${poster.slug}`}>
                   {poster.name}
                 </Link>
               </p>
