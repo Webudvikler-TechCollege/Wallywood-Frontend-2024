@@ -1,0 +1,184 @@
+<h1 style="background-color: #1D1E2C; color: white; padding: 10px;">Opgavebeskrivelse</h1>
+
+<p><img src="https://moodle.techcollege.dk/draftfile.php/1419/user/draft/225709000/affaldsguiden-moodle-splash.jpg?time=1725013560431" alt="Affaldsguiden" width="100%" height="100%" class="img-fluid atto_image_button_text-top"><br></p>
+<p>Du arbejder som nystartet webudvikler med speciale i frontend udvikling. I en typisk arbejdssituation er du bindeleddet mellem mediegrafikeren og backend programmøren. Din rolle er at formidle data fra en backend i det design som mediegrafikeren har sat op.</p>
+<p>Du har fået til opgave at bygge en frontend løsning til Affaldsguiden, som er et nyt regionalt tiltag omkring bæredygtig sortering af affald i Nordjylland. Regionen skal have en applikation som kan vejlede borgere i at sortere deres affald på et udvalg af regionens genbrugsstationer. I samme ombæring ønsker regionen også at modtage feedback fra brugernes oplevelser på de forskellige genbrugsstationer.</p>
+
+<h2 style="background-color: #59656F; color: white; padding: 8px;">Design &amp; opsætning</h2>
+<p>Mediegrafikeren har leveret et godkendt design og styleguide i Figma. Du kan finde et link til det under punktet ressourcer.</p>
+<p>Du skal opsætte din side sådan, at den&nbsp;fremstår i overensstemmelse med det udleverede design.</p>
+<p>På siden <em>Components</em> i Figma filen finder du en oversigt over de fonte og farver du som du skal bruge i din opsætning.</p>
+<p>Hvis du oplever at der er uoverensstemmelse mellem design og det udleverede datagrundlag, må du gerne selv komme med et forslag til hvordan det kan løses.</p>
+<p><span style="font-size: 0.9375rem; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, &quot;Liberation Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;">Kunden er også modtagelig for ændringsforslag i designet, så længe det kan argumenteres til kundens fordel.</span><br></p>
+
+<h2 style="background-color: #59656F; color: white; padding: 8px;">Webbaseret API</h2>
+<p>Sitets indhold skal kaldes fra et webbaseret API.&nbsp;Det anbefales at du bruger&nbsp;<em>Supabase</em>&nbsp;til denne del af opgaven.</p>
+<p>Datagrundlaget er vedlagt opgaven i form af en række CSV-filer. Din opgave at bygge og sikre databasen ud fra det vedlagte ER diagram og de udleverede datafiler.&nbsp;</p>
+<p>Du finder link til datafiler og ER diagram under afsnittet <em>Ressourcer </em>længere nede i opgaven.</p>
+
+<h2 style="background-color: #59656F; color: white; padding: 8px;">Kravspecifikation</h2>
+
+<p>Herunder gives et overblik over krav til websitets layout, funktionalitet og indhold.</p>
+
+<h3 style="background-color: #AC9FBB; color: white; padding: 6px;">Generelle krav</h3>
+<ul>
+    <li>Sitet skal opbygges i HTML, prekompileret CSS og Javascript. Du må gerne anvende et framework eller lignende værktøjer indenfor en eller flere af de tre teknologier.</li>
+    <li>Sitet bygges i standardmål efter layoutet.</li>
+    <li>Sitet skal være responsivt.</li>
+    <li>Sitet skal opfylde de gængse standarder indenfor semantisk, korrekt kode og søgemaskine optimering (SEO).</li>
+    <li>Sitet skal indeholde svar og fejlhåndtering på alle relevante fejl, så brugeren får en beskeder der tager hensyn til sitets indhold.</li>
+    <li>Der skal være validering på alle formularer/inputelementer.</li>
+</ul>
+
+<h3 style="background-color: #AC9FBB; color: white; padding: 6px;">Faste elementer</h3>
+<p>Følgende elementer skal være på alle sider.</p>
+<ul>
+    <li>Header med logo og knap til login som skal linke til loginsiden. Logo skal linke til forside. Hvis bruger er logget ind, skal det markeres med navn og knappen skifte til en logout knap.</li>
+    <li>Navigation med links til siderne Forside, Sorteringsguide, Genbrugsstationer og Bestil Beholder. Valgt menupunkt skal markeres som aktiv baggrundsfarve.</li>
+    <li>Footer med logo, adresse, links til App stores og sociale medier.</li>
+    <li>Alle sider – med undtagelse af kategorisiderne under sortering – skal have en baggrund med et grønt til hvid/transparent farveforløb fra header og ned over siden. På kategorisiden skal forløbet følge kategoriens farve.</li>
+</ul>
+
+<h3 style="background-color: #AC9FBB; color: white; padding: 6px;">Forside</h3>
+<p>Forsiden vises med et billede i toppen og to tilfældigt sorteret nyheder i hver sin boks i bunden af billedet.</p>
+<p>Under disse skal der vises en boks med tekst, billede og link til en specifik artikel om hvad der sker med vores affald. Artiklen har id 2.</p>
+<p>Sidst skal der være en boks med billede tekst og link til artikel med tips og tricks til affaldssortering. Denne artikel har id 4.</p>
+
+<details style="margin-top: 10px;margin-bottom: 20px;" open="">
+    <summary style="font-weight: bold;">Hints til API</summary>
+    <ul>
+        <li>Artikler hentes fra tabellen <em>articles</em></li>
+        <li>En artikel defineres som en nyhed hvis feltet <em>is_news</em> er sat til <em>true</em></li>
+    </ul>
+</details>
+
+<h3 style="background-color: #AC9FBB; color: white; padding: 6px;">Sorteringsguide</h3>
+<p>Flowet i Sorteringsguiden er delt op i tre trin: sektioner, kategorier og typer.</p>
+<p>På guidens første niveau får man en liste over de forskellige sektioner i bokse med titel, billede og sektionens farve. Der skal være en hover effekt på boksene som du selv skal komme med et bud på.</p>
+<p>Hvis man klikker på en sektion, skal man sendes videre til en side med sektionens underkategorier. Sidens farveforløb skal ændres til sektionens farve og sektionens navn skal stå som sidens hovedoverskrift.</p>
+<p>Derunder skal sektionens kategorier vises i en liste af bokse med ikon, titel og billede. I bunden af hver boks skal der være en klikbar knap som via en animation, åbner boksen og viser kategoriens typer.</p>
+<p>Typerne vises med titel delt op i Ja og Nej tak spalter.</p>
+
+<details style="margin-top: 10px;margin-bottom: 20px;" open="">
+    <summary style="font-weight: bold;">Hints til API</summary>
+    <ul>
+        <li>Sektioner hentes fra tabellen <em>trash_sections</em></li>
+        <li>Kategorier hentes fra tabellen <em>trash_categories </em>via <em>section_id</em></li>
+        <li>Typer hentes fra <em>trash_types</em></li>
+        <li>Kategorier og typer er relaterede via tabellen <em>trash_category_type_rel</em></li>
+        <li>Feltet <em>trash_category_type_rel</em>.<em>is_allowed</em> definerer om en type er tilladt eller ej (Ja/Nej spalte)</li>
+    </ul>
+</details>
+
+<h3 style="background-color: #AC9FBB; color: white; padding: 6px;">Genbrugsstationer</h3>
+<p>Sitet skal have en liste over de forskellige genbrugsstationer. Hver station vises med et kort, titel, adresse og antal stjerner. Når man klikker på en station, skal man sendes videre til en side med detalje visning af stationen. Denne visning skal vise et kort i toppen, navn, adresse og kontaktoplysninger på stationen og samlet antal stjerner.</p>
+<p>Under dette skal der være en liste med bruger anmeldelser og mulighed for at skrive en anmeldelse. Man skal være logget ind for at tilføje en anmeldelse.</p>
+
+<details style="margin-top: 10px;margin-bottom: 20px;" open="">
+    <summary style="font-weight: bold;">Hints til API</summary>
+    <ul>
+        <li>Stationer hentes fra tabellen <em>recycling_sites</em></li>
+        <li>Kort kan styres med felterne <em>latitude</em> og <em>longitude</em></li>
+        <li>Anmeldelser hentes fra tabellen <em>reviews</em></li>
+        <li>En anmeldelse relateres til en genbrugsstation via felter <em>site_id</em></li>
+        <li>Stjerner angives i feltet <em>num_stars</em></li>
+    </ul>
+</details>
+
+<h3 style="background-color: #AC9FBB; color: white; padding: 6px;">Artikler</h3>
+<p>Artikler vises i en liste sorteret faldende efter dato med billede, titel, dato og teaser. Når man klikker på en artikel, skal man sendes videre til en detalje side hvor man kan læse hele artiklen.</p>
+
+<details style="margin-top: 10px;margin-bottom: 20px;" open="">
+    <summary style="font-weight: bold;">Hints til API</summary>
+    <ul>
+        <li>Artikler hentes fra tabellen <em>articles</em></li>
+    </ul>
+</details>
+
+<h3 style="background-color: #AC9FBB; color: white; padding: 6px;">Bestil container</h3>
+<p>Kommunens borgere skal have mulighed for at bestille en container til en af følgende typer affald via en bestillingsformular:</p>
+<ul>
+    <li>Mad &amp; Rest</li>
+    <li>Pap &amp; Papir</li>
+    <li>Past &amp; Metal</li>
+    <li>Farligt affald</li>
+</ul>
+<p>Formularen skal desuden indeholde felter til navn, adresse, postnummer, by, email og telefonnummer.</p>
+<p>Når en bestilling er sendt skal brugeren videresendes til en svarside med tak for bestilling.</p>
+
+<details style="margin-top: 10px;margin-bottom: 20px;" open="">
+    <summary style="font-weight: bold;">Hints til API</summary>
+    <ul>
+        <li>Container typer kan hentes i tabellen <em>containers</em></li>
+        <li>Bestillinger gemmes i tabellen <em>orders</em></li>
+        <li>Reference til container sker på feltet <em>orders</em>.<em>container_id</em></li>
+    </ul>
+</details>
+
+<h3 style="background-color: #AC9FBB; color: white; padding: 6px;">Login</h3>
+<p>Login siden skal give brugere mulighed for at logge ind med deres brugernavn og password.</p>
+<p>Når en bruger er logget ind, skal det markeres med deres navn i sitets header. Desuden skal der være en knap med en log ud funktion.</p>
+<p>Når man er logget ind, skal man have mulighed for at slette eller redigere ens egne anmeldelser. Dette skal markeres i listen over anmeldelser, men kun ved dem man selv har skrevet.</p>
+
+<h2 style="background-color: #59656F; color: white; padding: 8px;">Ressourcer</h2>
+<p>Herunder finder du links til de ressourcer du skal bruge for at løse opgaven</p>
+<ul>
+    <li><a href="https://www.figma.com/proto/YoZNC3lEqBmEPmKrbRxcb6/Affaldsguiden?node-id=0-1&amp;t=DCTAv1TuhMAAJq4U-1" target="_blank">Figma Design</a></li>
+    <li><a href="https://github.com/Webudvikler-TechCollege/Affaldsguiden-Files" target="_blank">CSV Filer og fotos på Github</a></li>
+    <li><a href="https://drawsql.app/teams/webudvikler-team-techcollege/diagrams/trashguide" target="_blank">ER Diagram</a></li>
+</ul>
+<h2 style="background-color: #59656F; color: white; padding: 8px;">Rapport</h2>
+<p>Du skal udarbejde en projektrapport sammen med opgaveløsningen. Projektrapporten skal indeholde følgende:</p>
+<ul>
+    <li>Vurdering af din egen indsats og gennemførelse af prøven.</li>
+    <li>Argumentation for de valg du har truffet under løsningen af opgaven.</li>
+    <li>Redegørelse for oprindelsen af de forskellige kodeelementer i prøven.</li>
+    <li>Fremhævelse af eventuelle særlige punkter til bedømmelse.</li>
+    <li>Angivelse af url adresser, brugernavne og passwords der er nødvendige for at lærer og censor kan se opgaven.</li>
+    <li>Eventuelle bilag</li>
+</ul>
+<p>Forsiden af rapporten skal indeholde:</p>
+<ul>
+    <li>Opgavens navn</li>
+    <li>Dit navn og holdnummer</li>
+    <li>URL til GitHub repository</li>
+    <li>Supabase URL og KEY til .env fil</li>
+    <li>Eventuelt brugernavn og adgangskode</li>
+</ul>
+<p>Omfanget af rapporten skal være på maksimum fem A4-sider eksklusive bilag.</p>
+<p>Projektrapporten navngives med dit navn plus rapport og afleveres som en pdf-fil eller en markdown fil i dit Github repository.</p>
+<p>Eksempel: <em>dit_navn_rapport_affaldsguiden.pdf</em>.</p>
+
+<h2 style="background-color: #59656F; color: white; padding: 8px;">Prioritetsliste</h2>
+<p>Herunder finder du en liste over hvordan du bør prioritere i opgaven:</p>
+<ol>
+    <li>Lær opgaven at kende<br>
+        Kig og læs det hele grundigt igennem. Tag noter og spørg hvis du er tvivl om noget.</li>
+
+    <li>Opsætning af database<br>
+        Byg dit supabase projekt og tabeller ud fra de vedlagte CSV-filer og ER diagram. Husk at sætte datatyper og relationer.</li>
+
+    <li>Generel opsætning af design<br>
+        Byg sitets faste elementer sådan at de står tilnærmelsesvist færdigt i html og css.</li>
+
+    <li>4. Sorteringsguide<br>
+        Lav udtræk og opsætning af sektioner, kategorier og typer efter designets anvisninger.</li>
+
+    <li>Integration af data og billeder<br>
+        Få styr på dine javascript fetch af forskellige data og billeder fra API’et.</li>
+
+    <li>Login<br>
+        Det er vigtigt at brugere kan logge ind på sitet – ellers kan de ikke kommentere de forskellige brød opskrifter.</li>
+
+    <li>Genbrugsstationer<br>
+        Opsæt liste og detaljer. Husk at få formular og liste til anmeldelser med.</li>
+
+    <li>Bestilling af container<br>
+        Opsæt formular med valg af container type. Test at data bliver gemt i databasen.</li>
+</ol>
+
+<h2 style="background-color: #59656F; color: white; padding: 8px;">Aflevering</h2>
+<p>Inden fristens udløb skal du aflevere din rapport i pdf format som besvarelse til opgaven på Moodle. Husk at rapporten skal indeholde link til dit github repository og de nødvendige adgangskoder til database og login.</p>
+<p>Deadline for aflevering er fredag den 6. september 2024 kl. 14:00.</p>
+
+<p>God arbejdslyst! 😊</p>
